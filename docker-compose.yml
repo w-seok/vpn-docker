@@ -1,0 +1,15 @@
+services:
+  vpn-sasctl:
+    container_name: vpn
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./workspace:/workspace
+      - ./openvpn:/etc/openvpn
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    stdin_open: true
+    tty: true
